@@ -2,6 +2,7 @@
 import random
 import string
 
+import bcrypt
 
 # Shift+F10을(를) 눌러 실행하거나 내 코드로 바꿉니다.
 # 클래스, 파일, 도구 창, 액션 및 설정을 어디서나 검색하려면 Shift 두 번을(를) 누릅니다.
@@ -19,7 +20,11 @@ def random_string(string_length, count, ascii_case):
 
     for _ in range(count):
         rand_str = ''.join(random.choice(ascii_case_map.get(ascii_case) + string.digits) for _ in range(string_length))
-        print(rand_str)
+        encoded = rand_str.encode('utf-8')
+        salt = bcrypt.gensalt(10)
+        hashed = bcrypt.hashpw(encoded, salt)
+        hashed = str(hashed)[2:-1]
+        print(f"랜덤스트링: {rand_str}, 비밀번호: {hashed}")
 
 
 # 스크립트를 실행하려면 여백의 녹색 버튼을 누릅니다.
