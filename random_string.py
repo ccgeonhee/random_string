@@ -1,4 +1,5 @@
 # 샘플 Python 스크립트입니다.
+import os
 import random
 import string
 
@@ -34,5 +35,7 @@ if __name__ == '__main__':
     print("\n0: 소문자만, 1: 대문자만, 2: 대, 소문자 모두")
     ascii_case = int(input("대, 소문자 여부를 입력해주세요: "))
     random_string(string_length, count, ascii_case)
+
+    os.system('pause')
 
 # https://www.jetbrains.com/help/pycharm/에서 PyCharm 도움말 참조
